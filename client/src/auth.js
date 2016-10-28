@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 module.exports = {
     login( email, pass, cb ) {
 
@@ -9,22 +11,29 @@ module.exports = {
           return;
         }
 
-        pretendRequest( email, pass, (res) => {
-            console.log(email, pass)
-            if ( res.authenticated ) {
-                localStorage.token = res.token
+        var url = '/api/1/authenticate';
+        var self = this;
+        var body = {
+            email: email,
+            pass: pass
+        };
+
+        axios.post(url, body).then(function (res) {
+            var data = res.data
+            if (res.data.success) {
+                localStorage.token = data.token
 
                 if (cb) {
-                    cb(true);
+                    cb(true)
                 }
 
-                this.onChange(true);
-
+                self.onChange(true)
             } else {
                 if (cb) {
                     cb(false)
                 }
-                this.onChange(false)
+
+                self.onChange(false)
             }
         })
     },
@@ -40,18 +49,4 @@ module.exports = {
         return localStorage.token;
     },
     onChange () {}
-}
-
-
-function pretendRequest(email, pass, cb) {
-  setTimeout(() => {
-    if (email === 'sebi@example.com' && pass === 'password1') {
-      cb({
-        authenticated: true,
-        token: Math.random().toString(36).substring(7)
-      })
-    } else {
-      cb({ authenticated: false })
-    }
-  }, 0)
 }

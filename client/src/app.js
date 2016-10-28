@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './app.css';
-import xhr from 'xhr';
 import auth from './auth'
 
 class App extends Component {
@@ -25,12 +24,12 @@ class App extends Component {
 
     componentDidMount( ) {
         var url = '/api/1/events';
-        xhr({
-            url
-        }, (err, data) => {
-            // var body = JSON.parse(data.body)
-            // console.log(body)
-        })
+        // xhr({
+        //     url
+        // }, (err, data) => {
+        //     // var body = JSON.parse(data.body)
+        //     // console.log(body)
+        // })
     }
     render() {
         return (
