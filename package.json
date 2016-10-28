@@ -1,17 +1,19 @@
 {
-  "name": "react-node-procfile",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "start": "nf start -p 3000",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.14.0",
-    "foreman": "^2.0.0",
-    "xhr": "^2.2.2"
-  }
+    "name": "react-node-procfile",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "deploy": "npm run build && git add . && git commit -m 'Update' && git push live master",
+        "build": "cd client && npm run build && cd ..",
+        "start": "nf start -p 3000",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+"author": "",
+"license": "ISC",
+"dependencies": {
+        "express": "^4.14.0",
+        "foreman": "^2.0.0",
+        "xhr": "^2.2.2"
+    }
 }
