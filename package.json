@@ -15,6 +15,7 @@
     "axios": "^0.15.2",
     "express": "^4.14.0",
     "foreman": "^2.0.0",
-    "body-parser": "^1.15.2"
+    "body-parser": "^1.15.2",
+    "jsonwebtoken": "^7.1.9"
   }
 }
