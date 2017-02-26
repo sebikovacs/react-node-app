@@ -1,52 +1,52 @@
-import axios from 'axios';
+import axios from "axios";
 
 module.exports = {
     login( email, pass, cb ) {
-
-        cb = arguments[arguments.length - 1];
-
-        if (localStorage.token) {
-          if (cb) cb(true);
-          this.onChange(true);
-          return;
+        if ( localStorage.token ) {
+            if ( cb ) cb( true );
+            return this.onChange( true );
         }
 
-        var url = '/api/1/authenticate';
-        var self = this;
-        var body = {
-            email: email,
-            pass: pass
+        const url = "/api/1/authenticate";
+        const self = this;
+        const body = {
+            email,
+            pass
         };
 
-        axios.post(url, body).then(function (res) {
-            var data = res.data
-            if (res.data.success) {
-                localStorage.token = data.token
+        axios.post( url, body ).then( ( res ) => {
+            const data = res.data;
+            if ( res.data.success ) {
+                localStorage.token = data.token;
 
-                if (cb) {
-                    cb(true)
+                if ( cb ) {
+                    cb( true );
                 }
 
-                self.onChange(true)
+                self.onChange( true );
             } else {
-                if (cb) {
-                    cb(false)
+                if ( cb ) {
+                    cb( false );
                 }
 
-                self.onChange(false)
+                self.onChange( false );
             }
-        })
+        } );
     },
+
     getToken() {
-        return localStorage.token
-    },
-    logout(cb) {
-        delete localStorage.token
-        if (cb) cb()
-        this.onChange(false)
-    },
-    loggedIn: () => {
         return localStorage.token;
     },
+
+    logout( cb ) {
+        delete localStorage.token;
+        if ( cb ) {
+            cb();
+        }
+        this.onChange( false );
+    },
+
+    loggedIn: () => localStorage.token,
+
     onChange () {}
-}
+};

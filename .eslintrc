@@ -1,0 +1,6 @@
+{
+    "extends": "fortech",
+    "rules": {
+        "comma-dangle": ["error", "never"]
+    }
+}

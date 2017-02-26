@@ -1,18 +1,18 @@
+import { withRouter } from "react-router";
 import React from "react";
 import auth from "./auth";
-import { withRouter } from 'react-router'
 import "./auth.css";
 
 class Login extends React.Component {
     constructor () {
-        super()
+        super();
         this.state = {
             error: false
-        }
+        };
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault()
+    handleSubmit = ( e ) => {
+        e.preventDefault();
 
         const email = this.refs.email.value;
         const password = this.refs.password.value;
@@ -25,10 +25,10 @@ class Login extends React.Component {
             const { location } = this.props;
 
             // redirect user
-            if (location.state && location.state.nextPathname) {
-                this.props.router.replace(location.state.nextPathname)
+            if ( location.state && location.state.nextPathname ) {
+                this.props.router.replace( location.state.nextPathname )
             } else {
-                this.props.router.replace('/')
+                this.props.router.replace( "/" );
             }
         } );
     }
@@ -36,21 +36,21 @@ class Login extends React.Component {
         return (
             <div>
                 <div>Login </div>
-                error: <span style={{color: 'red'}}> { this.state.error ? 'true' : 'false' }</span>
+                error: <span style={ { color: "red" } }> { this.state.error ? "true" : "false" }</span>
                 <form action="" onSubmit={ this.handleSubmit }>
-                    <label htmlFor="">
+                    <label htmlFor="email">
                         email:
-                        <input type="email" ref="email" required />
+                        <input type="email" ref="email" id="email" required />
                     </label>
-                    <label htmlFor="">
+                    <label htmlFor="password">
                         password
-                        <input type="password" ref="password" required /> (hint: password 1)
+                        <input type="password" ref="password" id="password" required /> (hint: password 1)
                     </label>
                     <button type="submit">Login</button>
                 </form>
             </div>
-        )
+        );
     }
 }
 
-export default withRouter(Login);
+export default withRouter( Login );

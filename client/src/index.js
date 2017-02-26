@@ -9,19 +9,17 @@ import Login from "./login";
 import Logout from "./logout";
 import About from "./about";
 import Dashboard from "./dashboard";
-import auth from './auth';
-
-var requireAuth = (nextState, replace) => {
-    if (!auth.loggedIn()) {
-        replace({
-            pathname: '/login',
-            state: { nextPathname: nextState.location.pathname }
-        })
-      }
-}
-
-// CSS files
+import auth from "./auth";
 import "./index.css";
+
+const requireAuth = ( nextState, replace ) => {
+    if ( !auth.loggedIn( ) ) {
+        replace( {
+            pathname: "/login",
+            state: { nextPathname: nextState.location.pathname }
+        } );
+    }
+};
 
 ReactDOM.render(
     <Router history={ browserHistory }>
@@ -32,5 +30,5 @@ ReactDOM.render(
             <Route path="dashboard" component={ Dashboard } onEnter={ requireAuth } />
         </Route>
     </Router>,
-    document.getElementById('root')
-);
+    document.getElementById( "root" )
+ );
