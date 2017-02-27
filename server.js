@@ -94,4 +94,4 @@ module.exports = ( () => {
     } );
 
     return app;
- }() );
+} );

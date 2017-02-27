@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
+import "./skeleton.css";
 import "./app.css";
 import auth from "./auth";
 
@@ -35,14 +36,16 @@ class App extends Component {
     render() {
         const loggedIn = JSON.stringify( this.state.loggedIn );
         return (
-            <div>
-                <h1>Homepage</h1>
-                <nav>
-                    <Link to="/logout">Logout</Link>
-                    <Link to="/login">Login</Link>
-                </nav>
-                { this.state.loggedIn ? `Logged in ${ loggedIn }` : "Not Logged in" }
-                { this.props.children }
+            <div className="row">
+                <div className="four columns offset-by-four">
+                    <h1>HEADER { loggedIn }</h1>
+                    <nav>
+                        { this.state.loggedIn ? <Link className="button" to="/logout">Logout</Link> : <Link className="button" to="/login">Login</Link> }
+                        <Link className="button" to="/register">Register</Link>
+                    </nav>
+
+                    { this.props.children }
+                </div>
             </div>
         );
     }

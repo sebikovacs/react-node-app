@@ -34,6 +34,10 @@ module.exports = {
         } );
     },
 
+    register( email, pass, cb ) {
+        // do register
+    },
+
     getToken() {
         return localStorage.token;
     },

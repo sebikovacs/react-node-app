@@ -8,6 +8,11 @@ module.exports = ( config ) => {
         autoload: true
     } );
 
+    db.clients = new Datastore( {
+        filename: `${ config.dataDir }${ config.dbDir }/clients.db`,
+        autoload: true
+    } );
+
     return {
         db
     };

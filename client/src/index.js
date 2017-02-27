@@ -9,6 +9,7 @@ import Login from "./login";
 import Logout from "./logout";
 import About from "./about";
 import Dashboard from "./dashboard";
+import Register from "./register";
 import auth from "./auth";
 import "./index.css";
 
@@ -25,6 +26,7 @@ ReactDOM.render(
     <Router history={ browserHistory }>
         <Route path="/" component={ App }>
             <Route path="login" component={ Login } />
+            <Route path="register" component={ Register } />
             <Route path="logout" component={ Logout } />
             <Route path="about" component={ About } />
             <Route path="dashboard" component={ Dashboard } onEnter={ requireAuth } />
