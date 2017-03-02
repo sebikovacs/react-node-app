@@ -6,7 +6,7 @@ const bodyParser = require( "body-parser" );
 const jwt = require( "jsonwebtoken" );
 const datastore = require( "./api/datastore.js" );
 
-module.exports = ( () => {
+module.exports = ( function() {
     const app = express();
     const oneDay = 1440;
 
@@ -94,4 +94,4 @@ module.exports = ( () => {
     } );
 
     return app;
-} );
+}() );
